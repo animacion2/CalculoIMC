@@ -1,0 +1,590 @@
+<html>
+
+<head>
+    <title>Calculadora de Indice de Masa Corporal</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <style>
+        p,
+        h1,
+        h2,
+        ul,
+        td,
+        th {
+            font-family: 'Raleway', sans-serif;
+        }
+
+        button:hover {
+            background-color: #C4D3BA !important;
+            color: black !important;
+        }
+
+        button {
+            font-family: 'Raleway', sans-serif;
+            font-size: 18px;
+            background-color: #79B8AB;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        /* ACCORDION */
+        .panel {
+            padding: 0 18px;
+            display: none;
+            background-color: #EBF3F2;
+            overflow: hidden;
+            text-align: justify;
+        }
+
+        /* TABLE */
+        table,
+        td,
+        th {
+            border: 1px solid black;
+        }
+
+        td {
+            padding: 0px 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        @media only screen and (max-width: 768px) {
+
+            #formulario,
+            #como_mide,
+            #resultado {
+                width: 100% !important;
+            }
+        }
+    </style>
+</head>
+
+<body style="display: flex;
+justify-content: center;
+align-items: center;">
+
+    <div class="contenedor" style=" width: 1024px;
+    height: auto;
+    margin: 0 auto;
+    background-color: #EBF3F2;
+    padding: 20px;">
+
+        <!-- TITULO -->
+        <h1 style="width: 100%;
+        height: auto;
+        float: left;
+        text-align: center;">Calculadora de IMC: Indice de Masa Corporal</h1>
+
+        <!-- FORMULARIO HTML -->
+        <div id="formulario" style="width: 60%;
+        height: auto;
+        float: left;">
+            <div style="width: 100%;
+            height: auto;">
+                <img src="src/cabezote.png" style="width: 100%; height: auto;">
+            </div>
+
+            <div style="width: 100%;
+            height: auto;
+            text-align: center;">
+                <p>El peso debe ser en kilogramos.</p>
+                <p>La altura en metros, si mides 170 centimetros es igual a 1.7 metros.</p>
+                <p>Ingrese peso (kg): <input type="text" id="kg"></p>
+                <p>Ingrese Altura (m): <input type="text" id="m"></p>
+            </div>
+            <div style="width: 100%;
+            height: auto;
+            text-align: center;
+            padding: 20px;">
+                <button id="calc">Calcular IMC</button>
+            </div>
+        </div>
+
+        <!-- ¿CÓMO SE MIDE? -->
+        <div id="como_mide" style="width: 40%;
+        height: auto;
+        float: left;
+        justify-content: center;
+        display: flex;">
+            <div style="padding: 20px; 
+            background-color: #619CAE; 
+            width: 80%; 
+            border-radius: 6px">
+                <p style="padding: 10px;
+                color: white;"><b>
+                        <font style="font-size: 18px;">¿Cómo se mide el IMC?</font>
+                    </b></br>
+                    <br>La fórmula del IMC se calcula con el peso en kilogramos, dividido por la altura o talla al
+                    cuadrado
+                    [Kg
+                    /
+                    (M) 2 ]. El Índice de Masa Muscular es un indicador que se utiliza habitualmente para identificar
+                    trastornos alimenticios como la delgadez, sobrepeso, obesidad u obesidad mórbida.
+                </p>
+                <div style="width: 100%; height: auto;">
+                    <img src="src/alimentos.png" style="width: 100%; height: auto;">
+                </div>
+            </div>
+        </div>
+
+        <!-- RESULTADO -->
+        <div id="resultado" style="width: 100%;
+        height: auto;
+        float: left;
+        text-align: center;
+        font-family: 'Raleway', sans-serif;
+        margin: 20px 0px;">
+            <b>IMC:</b> <span id="imc"></span></br>
+            <b>Lectura:</b> <span id="lectura"></span></br>
+        </div>
+
+        <!-- IMC inferior a 18.5. -->
+        <div id="inferior" style="width: 100%; height: auto; float: left; display: none;">
+            <div class="contenido" style="text-align: center;">
+
+                <h2 style="text-align: center;">IMC inferior a 18.5.</h2>
+                <p style="text-align: justify; padding: 0px 30px;">
+                    Tu peso está en la categoría de <b>Bajo
+                        peso.</b> La delgadez puede deberse a diversos factores que pueden ser genéticos y/o dietéticos.
+                    Probablemente no estés consumiendo todas las calorías que tu cuerpo necesita. Independientemente
+                    de su causa, es importante para tu bienestar mantener un peso saludable, para lo cual te
+                    recomendamos que consumas las tres comidas principales, además de entrecomidas, incluyendo tus
+                    alimentos y preparaciones preferidas; recuerda que todo se trata de equilibrio y tener un bajo peso
+                    no
+                    implica que descuides la calidad de los alimentos, a pesar de que debas aumentar tu consumo usual.
+                    Agrega disciplina para no saltarte ninguna comida principal, realizarlo a las horas adecuadas y con
+                    un
+                    contenido balanceado.
+                </p>
+                <button class="accordion" style="width: 50%;">Tips</button>
+                <div class="panel">
+                    <ul>
+                        <li><b>Come con más frecuencia.</b> Come de cinco a seis comidas más durante el día, en lugar de
+                            dos o tres comidas principales.<br />
+                        </li><br />
+                        <li><b>Elige alimentos con alto contenido de nutrientes.</b> Como parte de una alimentación
+                            saludable general, elige panes, pastas y cereales integrales, frutas y vegetales, productos
+                            lácteos, fuentes de proteínas magras, y frutos secos y semillas.<br />
+                        </li><br />
+                        <li><b>Prueba con los batidos.</b> No te llenes con gaseosas, café, jugos de azucarados, ni
+                            otras bebidas con poco valor nutritivo. En su lugar, toma batidos saludables preparados con
+                            leche, cereales, frutas y/o semillas.<br />
+                        </li><br />
+                        <li><b>Fíjate en qué momentos tomas líquido.</b> En algunas personas, tomar líquido antes de las
+                            comidas o tomar demasiada agua durante el día, les reduce el apetito. Para esto puede ser
+                            útil tomar líquido 30 minutos después de la comida, no junto a ella.<br />
+                        </li><br />
+                        <li><b>Incluye snacks nutritivos.</b> Para las entrecomidas incluye frutos secos, yogurt, frutas
+                            y aguacate. Un snack antes de acostarte puede ayudar a que no pases tantas horas de “ayuno”,
+                            momento en el cual puedes hacer un sánduche de mermelada, o una tortilla con relleno de
+                            aguacate, vegetales en rodajas y queso o jamón.<br />
+                        </li><br />
+                        <li><b>Haz ejercicio.</b> El ejercicio, especialmente el de fuerza, puede ayudarte a aumentar de
+                            peso al aumentar tu masa muscular. Además, la práctica de actividad física estimula el
+                            apetito.<br />
+                        </li>
+                    </ul>
+                </div><br />
+
+                <br><button class="accordion" style="width: 50%;">Lista de compromisos</button>
+                <div class="panel">
+                    <p>En el siguiente cuadro encontrarás un recuadro con compromisos relacionados con tu estado de
+                        salud actual. Marca aquellos que puedas o desees adquirir.</p>
+                    <table>
+                        <tr>
+                            <th>Me comprometo a:</th>
+                            <td>Incluir entre comidas</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Elegir más variedad de alimentos nutritivos</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Probar bebidas más nutritivas</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Aumentar el tamaño de las porciones</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Escoger snacks nutritivos</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>No omitir comidas</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Hacer ejercicio</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- IMC entre 18.5 y 24.9. -->
+        <div id="normal" style="width: 100%; height: auto; float: left; display: none;">
+            <div class="contenido" style="text-align: center;">
+
+                <h2 style="text-align: center;">IMC entre 18.5 y 24.9.</h2>
+                <p style="text-align: justify; padding: 0px 30px;">
+                    Tu peso está en la categoría <b>Normal.</b>
+                    Mantener un peso saludable puede ayudar a prevenir problemas de salud, reduciendo el riesgo de
+                    padecer enfermedades crónicas. Además, tener un peso adecuado te permite tener más energía y dormir
+                    mejor. Para conservar tu peso, te recomendamos conservar una dieta balanceada, adecuada, variada,
+                    moderada y realizar ejercicio periódicamente.
+                </p>
+                <button class="accordion" style="width: 50%;">Tips</button>
+
+                <div class="panel">
+                    <ul>
+                        <li><b>Mantén variedad en la alimentación.</b> El equilibrio y la salud van de la mano. Recuerda
+                            que
+                            ningún alimento proporciona todos los nutrientes que el cuerpo necesita. En te lista de
+                            alimentos verifica la variedad y pregúntate cuántos diferentes tipos de alimentos estas
+                            consumiendo.<br />
+                        </li><br />
+                        <li><b>No descuides tus hábitos alimentarios.</b> La cantidad y la frecuencia de alimentos que
+                            consumes en el día es importante. Cada alimento cuenta. Por esto, procura no saltarte
+                            ninguna comida principal, incluye snacks saludables y se consciente de las porciones de los
+                            alimentos que consumes.<br />
+                        </li><br />
+                        <li><b>Evita alimentos altamente calóricos y poco nutritivos.</b> Los alimentos que más calorías
+                            proporcionan son aquellos con mayor contenido de grasa y de azúcar. Para mantener un peso
+                            saludable, modera el consumo de alimentos fritos, mecato, productos de panadería, bebidas
+                            azucaradas y dulces.<br />
+                        </li><br />
+                        <li><b>Incluye en mayor cantidad frutas y verduras.</b> Recuerda que incluir estos alimentos
+                            ayuda a
+                            mantener un balance calórico, ya que son alimentos bajos en calorías, pero tienen un alto
+                            contenido de fibra, agua, vitaminas y minerales, además de que producen mayor tiempo de
+                            saciedad.<br />
+                        </li><br />
+                        <li><b>Limita la cantidad de sal.</b> Optando por hierbas y especias que realzan el sabor de los
+                            alimentos utilizando por ejemplo limón, albahaca, cilantro, laurel, menta etc. <br />
+                        </li><br />
+                        <li><b>Realiza actividad física.</b> Siempre es bueno mantener el cuerpo en movimiento. Realiza
+                            un
+                            deporte que disfrutes o te llame la atención. Realiza, mínimo, dos horas y media de
+                            ejercicio a la semana.<br />
+                        </li><br />
+                        <li><b>Revisa tu peso.</b> Mantener un conocimiento periódico de tu peso te permitirá
+                            administrar
+                            adecuadamente tus hábitos alimentarios.<br />
+                        </li>
+                    </ul>
+                </div><br />
+
+                <br><button class="accordion" style="width: 50%;">Lista de compromisos</button>
+                <div class="panel">
+                    <p>En el siguiente cuadro encontrarás un recuadro con compromisos relacionados con tu estado de
+                        salud actual. Marca aquellos que puedas o desees adquirir.</p>
+                    <table>
+                        <tr>
+                            <th>Me comprometo a:</th>
+                            <td>Mantener una alimentación variada</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Cuidar mis hábitos alimentarios</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Elegir alimentos saludables y nutritivos</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Incluir mayor cantidad de frutas y verduras</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Incluir alimentos de todos los grupos</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Probar diferentes formas de sazonar mis comidas</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Realizar actividad física</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Revisar periódicamente mi peso</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- IMC entre 25.0 y 29.9. -->
+        <div id="sobrepeso" style="width: 100%; height: auto; float: left; display: none;">
+            <div class="contenido" style="text-align: center;">
+
+                <h2 style="text-align: center;">IMC entre 25.0 y 29.9.</h2>
+                <p style="text-align: justify; padding: 0px 30px;">
+                    Tu peso está en la categoría de
+                    <b>Sobrepeso.</b> Una mala alimentación y hábitos sedentarios pueden generar un impacto negativo en
+                    la
+                    salud, que desencadenan problemas médicos a futuro, como la diabetes, hipertensión arterial y
+                    colesterol alto. Para llegar a un peso saludable, debes reducir tu peso por medio de la combinación
+                    de una alimentación saludable con ejercicio periódico. Conseguir este objetivo depende de tu
+                    voluntad para transformar tus hábitos; la meta no es cambiar los números en la balanza, sino
+                    prevenir una afección en tu salud. En este sentido, adoptar buenos hábitos es mucho más efectivo y
+                    saludable a largo plazo, que realizar dieta.
+                </p>
+                <button class="accordion" style="width: 50%;">Tips</button>
+                <div class="panel">
+                    <ul>
+                        <li><b>Modifica tus hábitos alimentarios.</b> Paulatinamente, revisa tus hábitos alimentarios y
+                            modifica de a poco aquellos que no sean tan saludables. Una vez que se van cambiando
+                            progresivamente, es más fácil mantenerlos en el tiempo, que si se intenta hacerlo
+                            bruscamente. Un ejemplo puede ser que cuando tengas sed, optes por agua saborizada con una
+                            bolsita de aromática o pedazos de fruta, o refrescos sin azúcar, en lugar de bebidas
+                            gaseosas azucaradas.<br />
+                        </li><br />
+                        <li><b>Consume más porción de frutas y verduras al día.</b> Estas tienen muy poco contenido
+                            calórico,
+                            pero aportan muchos nutrientes y pueden ayudar a frenar el apetito voraz por alimentos no
+                            tan sanos.<br />
+                        </li><br />
+                        <li><b>Opta por otros métodos de cocción.</b> Elige la cocción al horno, salteados, asada o
+                            hervida
+                            en lugar de fritos, ya que estos permiten que los alimentos conserven sus propiedades
+                            nutricionales y no aportan tantas calorías como la cocción en aceite. <br />
+                        </li><br />
+                        <li><b>Disminuye las comidas poco nutritivas.</b> Esto se traduce en evitar el consumo de
+                            comidas
+                            altas en grasa, mecato, productos de panadería, postres y dulces.<br />
+                        </li><br />
+                        <li><b>Incorporar la actividad física a la rutina diaria.</b> La práctica de ejercicio es muy
+                            importante para la salud y está directamente relacionado con la composición corporal. Debe
+                            practicarse regularmente, para lo cual es preciso escoger una actividad que te guste, para
+                            que la realices con placer y disfrute, mínimo 3 veces a la semana, hasta que se convierta en
+                            un hábito diario.<br />
+                        </li><br />
+                        <li><b>Motívate.</b> Piensa en positivo y evita las ideas desalentadoras o negativas en torno al
+                            cambio de estilo de vida. Es muy importante que te proyectes para seguir adelante y tener
+                            éxito buscando un peso saludable, lo cual se traducirá inevitablemente en una mejor calidad
+                            de vida.<br />
+                        </li>
+                    </ul>
+                </div><br />
+
+                <br><button class="accordion" style="width: 50%;">Lista de compromisos</button>
+                <div class="panel">
+                    <p>En el siguiente cuadro encontrarás un recuadro con compromisos relacionados con tu estado de
+                        salud actual. Marca aquellos que puedas o desees adquirir.</p>
+                    <table>
+                        <tr>
+                            <th>Me comprometo a:</th>
+                            <td>Asesorarme para modificar mis hábitos alimentarios</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Consumir más frutas y verduras</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Probar diferentes métodos de cocción</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Elegir alimentos saludables y nutritivos</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Escoger snacks saludables</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Consumir los tamaños de porción adecuados</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>No omitir comidas principales</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Incluir alimentos ricos en fibra, grasas insaturadas y antioxidantes</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Incorporar la actividad física en mi vida diaria</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Motivarme frente al cambio de hábitos</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- IMC es 30.0 o superior. -->
+        <div id="obesidad" style="width: 100%; height: auto; float: left; display: none;">
+            <div class="contenido" style="text-align: center;">
+
+                <h2 style="text-align: center;">IMC es 30.0 o superior.</h2>
+                <p style="text-align: justify; padding: 0px 30px;">
+                    Tu peso está en la categoría de
+                    <b>Obesidad.</b> ¡Cuidado!, la obesidad puede generar repercusiones en tu salud física y
+                    psicoemocional, ya
+                    que una acumulación de grasa corporal aumenta la probabilidad de padecer enfermedades
+                    cardiovasculares, diabetes, cáncer, osteoartritis, entre otras. Es esencial evitar ganar más peso y
+                    abordar esta condición con una alimentación balanceada, ejercicio y tener acompañamiento de un
+                    profesional. Desde una visión simple, podríamos pensar que solo disminuyendo la ingesta obtendremos
+                    un descenso del peso, pero no es así, pues conseguir este cambio implica adoptar hábitos de vida
+                    saludables.
+                </p>
+                <button class="accordion" style="width: 50%;">Tips</button>
+
+                <div class="panel">
+                    <ul>
+                        <li><b>Evita el consumo de alimentos altamente calóricos.</b> En lugar de gaseosas y refrescos
+                            azucarados, opta por consumir jugos de fruta sin azúcar; en lugar de dulces y postres, elige
+                            frutas; en lugar de alimentos fritos y comida chatarra, escoge alimentos caseros hechos al
+                            vapor o asados; en lugar de mecato, selecciona frutos secos; y en lugar de productos de
+                            panadería, elige cereales integrales.<br />
+                        </li><br />
+                        <li><b>Reduce el tamaño de las porciones.</b> Recuerda que hay medidas caseras para medir las
+                            porciones de los alimentos que consumimos. Te invitamos a que revises tus porciones y, de
+                            ser necesario, cambiarlas; así podrás consumir lo que realmente necesitas y no caer en un
+                            exceso calórico.<br />
+                        </li><br />
+                        <li><b>Consume snacks saludables.</b> Sabemos que muchas veces la ansiedad y otros factores
+                            emocionales nos hacen “tener más hambre”, lo cual no significa que no puedas comer algún
+                            snack, pero procura que este sea saludable, tales como frutos secos, semillas, yogurt,
+                            fruta, o alguna verdura aderezada con un poco de limón.<br />
+                        </li><br />
+                        <li><b>No te saltes ninguna comida principal.</b> Todas las comidas son importantes porque nos
+                            proporcionan lo que necesita nuestro organismo para funcionar adecuadamente. Saltarse una
+                            comida principal solo nos traerá más sensación de hambre durante el día, por lo que debes
+                            enfocarte en llevar una vida saludable, y no solo en cambiar los números de la
+                            balanza.<br />
+                        </li><br />
+                        <li><b>Incluye alimentos ricos en fibra, grasas insaturadas y antioxidantes.</b> Especialmente
+                            frutas
+                            y verduras, cereales integrales, grasas saludables (aceites vegetales, aguacate, frutos
+                            secos), carnes magras y leguminosas.<br />
+                        </li><br />
+                        <li><b>Realiza actividad física.</b> Comienza lo más rápido posible y aumenta el ritmo
+                            paulatinamente. Puedes iniciar cambiando hábitos como subir por las escaleras en lugar de
+                            usar el ascensor; si algún lugar queda cercano, puedes optar por caminar, en lugar de usar
+                            un medio de transporte; realiza más tareas domésticas en lugar de pasar mucho tiempo en el
+                            computador, el televisor o el celular. Piensa en qué tipo de ejercicio te gustaría
+                            practicar, y luego pruébalo… te resultará más fácil seguir motivado si haces algo que te
+                            gusta. Recuerda que el objetivo es realizar, mínimo, 2 horas y media de actividad física a
+                            la semana.<br />
+                        </li><br />
+                        <li><b>Recuerda asesorarte con un profesional.</b> La obesidad es una condición que debe tener
+                            un
+                            abordaje multidisciplinario para obtener los resultados esperados, sin comprometer tu salud
+                            y bienestar. Por eso es importante que acudas a un profesional que te guíe en este
+                            camino.<br />
+                        </li>
+                    </ul>
+                </div><br />
+
+                <br><button class="accordion" style="width: 50%;">Lista de compromisos</button>
+                <div class="panel">
+                    <p>En el siguiente cuadro encontrarás un recuadro con compromisos relacionados con tu estado de
+                        salud actual. Marca aquellos que puedas o desees adquirir.</p>
+                    <table>
+                        <tr>
+                            <th>Me comprometo a:</th>
+                            <td>Asesorarme para modificar mis hábitos alimentarios</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Consumir más frutas y verduras</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Probar diferentes métodos de cocción</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Elegir alimentos saludables y nutritivos</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Escoger snacks saludables</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Consumir los tamaños de porción adecuados</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>No omitir comidas principales</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Incluir alimentos ricos en fibra, grasas insaturadas y antioxidantes</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Incorporar la actividad física en mi vida diaria</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Motivarme frente al cambio de hábitos</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT PARA CALCULAR IMC -->
+    <script type="text/javascript">
+        calc = document.getElementById("calc");
+        kg = document.getElementById("kg");
+        m = document.getElementById("m");
+        imc = document.getElementById("imc");
+        lectura = document.getElementById("lectura");
+
+        calc.onclick = function () {
+            if (kg.value != "" && m.value != "") {
+                imcx = (kg.value / (m.value * m.value));
+                imc.innerHTML = imcx
+                console.log(imcx);
+
+                if (imcx < 18.5) { lectura.innerHTML = "Peso inferior al normal"; document.getElementById("inferior").style.display = "block"; }
+                else if (imcx >= 18.5 && imcx <= 24.9) { lectura.innerHTML = "Peso normal"; document.getElementById("normal").style.display = "block"; }
+                else if (imcx >= 25 && imcx <= 29.9) { lectura.innerHTML = "Peso superior al normal"; document.getElementById("sobrepeso").style.display = "block"; }
+                else if (imcx > 30) { lectura.innerHTML = "Obesidad"; document.getElementById("obesidad").style.display = "block"; }
+
+            } else {
+                alert("Debes ingresar peso y altura.")
+            }
+        };
+
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
